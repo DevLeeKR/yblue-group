@@ -158,17 +158,24 @@
             border-color: var(--primary-color);
         }
 
+        /* 앱 아이콘 스타일 정밀 최적화 */
         .card-icon {
             width: 60px;
             height: 60px;
-            background-color: #EFF6FF;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            background-color: var(--bg-light);
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .card h3 {
@@ -202,18 +209,28 @@
             font-size: 0.8rem;
         }
 
+        /* 다운로드 버튼 그룹 반응형 레이아웃 */
+        .download-links {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-top: auto;
+        }
+
         .btn-download {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            padding: 12px;
+            flex: 1;
+            padding: 12px 5px;
             background-color: var(--text-dark);
             color: var(--white);
             border-radius: 8px;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: var(--transition);
             gap: 8px;
+            white-space: nowrap;
         }
 
         .btn-download:hover {
@@ -263,6 +280,14 @@
             .grid { grid-template-columns: 1fr; }
         }
 
+        /* 스마트폰 화면 해상도 대응 버튼 정렬 조절 */
+        @media (max-width: 400px) {
+            .download-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
         /* --- Language Display Logic --- */
         [lang="en"] { display: none; }
         body.en-mode [lang="ko"] { display: none; }
@@ -301,8 +326,11 @@
             <h2 class="section-title" lang="en">Our Apps</h2>
 
             <div class="grid">
+                
                 <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="card-icon">
+                        <img src="images/icon_dida.png" alt="DIDA Icon">
+                    </div>
                     <h3 lang="ko">DIDA (디다)</h3>
                     <h3 lang="en">DIDA</h3>
                     <p lang="ko">감성 포토 다이어리. 나를 기록하고 소중한 사람들과 소통하는 공간입니다.</p>
@@ -319,36 +347,20 @@
                         <li><i class="fa-solid fa-check"></i> Character growth system</li>
                     </ul>
 
-                    <a href="https://play.google.com/store/apps/details?id=com.dida.diary" target="_blank" class="btn-download">
-                        <i class="fa-brands fa-google-play"></i> Google Play
-                    </a>
+                    <div class="download-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.dida.diary" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                        <a href="https://apps.apple.com/app/id6763046237" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-apple"></i> App Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-star"></i></div>
-                    <h3 lang="ko">운명학 개론</h3>
-                    <h3 lang="en">Principles of Destiny</h3>
-                    <p lang="ko">동양의 사주와 서양의 타로를 결합한 종합 운세 솔루션입니다.</p>
-                    <p lang="en">Comprehensive fortune-telling solution combining Eastern Saju and Western Tarot.</p>
-                    
-                    <ul class="feature-list" lang="ko">
-                        <li><i class="fa-solid fa-check"></i> 사주·타로·관상·손금·해몽 통합 분석</li>
-                        <li><i class="fa-solid fa-check"></i> 인간관계(궁합) 심층 분석</li>
-                        <li><i class="fa-solid fa-check"></i> 고민 맞춤형 조언 제공</li>
-                    </ul>
-                    <ul class="feature-list" lang="en">
-                        <li><i class="fa-solid fa-check"></i> Saju, Tarot, Palmistry, Dream analysis</li>
-                        <li><i class="fa-solid fa-check"></i> In-depth compatibility analysis</li>
-                        <li><i class="fa-solid fa-check"></i> Personalized advice</li>
-                    </ul>
-
-                    <a href="https://play.google.com/store/apps/details?id=com.captain.fortune" target="_blank" class="btn-download">
-                        <i class="fa-brands fa-google-play"></i> Google Play
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-paw"></i></div>
+                    <div class="card-icon">
+                        <img src="images/icon_mnj.png" alt="MungNyangJack Icon">
+                    </div>
                     <h3 lang="ko">멍냥짹</h3>
                     <h3 lang="en">MungNyangJack</h3>
                     <p lang="ko">AI 기술로 반려동물의 마음을 이해하는 양방향 번역기입니다.</p>
@@ -365,13 +377,47 @@
                         <li><i class="fa-solid fa-check"></i> AI Character chat</li>
                     </ul>
 
-                    <a href="https://play.google.com/store/apps/details?id=com.captain.mnj" target="_blank" class="btn-download">
-                        <i class="fa-brands fa-google-play"></i> Google Play
-                    </a>
+                    <div class="download-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.captain.mnj" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                        <a href="https://apps.apple.com/app/id6759632175" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-apple"></i> App Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="card-icon">
+                        <img src="images/icon_fortune.png" alt="Fortune Icon">
+                    </div>
+                    <h3 lang="ko">운명학 개론</h3>
+                    <h3 lang="en">Principles of Destiny</h3>
+                    <p lang="ko">동양의 사주와 서양의 타로를 결합한 종합 운세 솔루션입니다.</p>
+                    <p lang="en">Comprehensive fortune-telling solution combining Eastern Saju and Western Tarot.</p>
+                    
+                    <ul class="feature-list" lang="ko">
+                        <li><i class="fa-solid fa-check"></i> 사주·타로·관상·손금·해몽 통합 분석</li>
+                        <li><i class="fa-solid fa-check"></i> 인간관계(궁합) 심층 분석</li>
+                        <li><i class="fa-solid fa-check"></i> 고민 맞춤형 조언 제공</li>
+                    </ul>
+                    <ul class="feature-list" lang="en">
+                        <li><i class="fa-solid fa-check"></i> Saju, Tarot, Palmistry, Dream analysis</li>
+                        <li><i class="fa-solid fa-check"></i> In-depth compatibility analysis</li>
+                        <li><i class="fa-solid fa-check"></i> Personalized advice</li>
+                    </ul>
+
+                    <div class="download-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.captain.fortune" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <img src="images/icon_vivid_sign.png" alt="Vivid Sign Icon">
+                    </div>
                     <h3 lang="ko">Vivid Sign</h3>
                     <h3 lang="en">Vivid Sign</h3>
                     <p lang="ko">언제 어디서나 내 마음을 전하는 고성능 스마트폰 전광판 앱입니다.</p>
@@ -388,13 +434,20 @@
                         <li><i class="fa-solid fa-check"></i> No login required</li>
                     </ul>
 
-                    <a href="https://play.google.com/store/apps/details?id=com.captain.vivid_sign" target="_blank" class="btn-download">
-                        <i class="fa-brands fa-google-play"></i> Google Play
-                    </a>
+                    <div class="download-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.captain.vivid_sign" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                        <a href="https://apps.apple.com/app/id6760094970" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-apple"></i> App Store
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <div class="card-icon">
+                        <img src="images/icon_d2rtracker.png" alt="D2R Tracker Icon">
+                    </div>
                     <h3 lang="ko">D2R Tracker</h3>
                     <h3 lang="en">D2R Tracker</h3>
                     <p lang="ko">게이머를 위한 필수 유틸리티! 공포 영역과 우버 정보를 놓치지 마세요.</p>
@@ -411,10 +464,16 @@
                         <li><i class="fa-solid fa-check"></i> No login required</li>
                     </ul>
 
-                    <a href="https://play.google.com/store/apps/details?id=com.captain.d2rtracker" target="_blank" class="btn-download">
-                        <i class="fa-brands fa-google-play"></i> Google Play
-                    </a>
+                    <div class="download-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.captain.d2rtracker" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                        <a href="https://apps.apple.com/app/id6759832529" target="_blank" class="btn-download">
+                            <i class="fa-brands fa-apple"></i> App Store
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -436,17 +495,16 @@
             const body = document.body;
             const buttons = document.querySelectorAll('.lang-btn');
             
-            // Remove active class from all buttons
             buttons.forEach(btn => btn.classList.remove('active'));
 
             if (lang === 'en') {
                 body.classList.remove('ko-mode');
                 body.classList.add('en-mode');
-                buttons[1].classList.add('active'); // Set EN button active
+                buttons[1].classList.add('active');
             } else {
                 body.classList.remove('en-mode');
                 body.classList.add('ko-mode');
-                buttons[0].classList.add('active'); // Set KO button active
+                buttons[0].classList.add('active');
             }
         }
     </script>
